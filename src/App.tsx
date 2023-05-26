@@ -1,9 +1,15 @@
+import { AuthProvider } from "./providers/authProvider"
+import { RoutesMain } from "./routes"
+import GlobalStyle from "./styles/GlobalStyle"
 
 function App() {
 
   return (
     <>
-    <h1>Hello</h1>
+    <GlobalStyle />
+    <AuthProvider>
+      <RoutesMain />
+    </AuthProvider>
     </>
   )
 }
