@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react"
 import { api } from "../../services/api"
+import { ContactList, Container } from "./styles"
+import { ContactInfo } from "../../components/ContactInfo"
+import { ModalAddContact } from "../../components/RegisterModal"
 
-interface Contact{
+export interface Contact{
     id: string,
     name: string,
     email: string,
@@ -10,6 +13,9 @@ interface Contact{
 
 export const DashBoard = () =>{
     const [contacts, setContacts] = useState<Contact[]>([])
+    const [isOpenModal, setIsOpenModal] = useState(false)
+
+    const toggleModal = () => setIsOpenModal(!isOpenModal)
 
     useEffect(() =>{
         (async () => {
@@ -20,15 +26,16 @@ export const DashBoard = () =>{
     }, [])
 
     return(
-        <>
-        <header><button>New Contact</button></header>
+        <Container>
+        <header><button type="button" onClick={toggleModal}>New Contact</button></header>
+        { isOpenModal && <ModalAddContact toggleModal={toggleModal} setContacts={setContacts} />}
         <main>
-            <ul>
+            <ContactList>
                 {
-                    contacts.map(contact => <li key={contact.id}>{contact.name}</li>)
+                    contacts.map(contact => <ContactInfo key={contact.id} contact={contact} setContacts={setContacts} />)
                 }
-            </ul>
+            </ContactList>
         </main>
-        </>
+        </Container>
     )
 }
