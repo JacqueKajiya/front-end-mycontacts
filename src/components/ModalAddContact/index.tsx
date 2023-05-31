@@ -1,28 +1,21 @@
-import { Dispatch, SetStateAction, useRef } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form"
-import { Contact } from "../../pages/Dashboard";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { api } from "../../services/api";
 import { CreateContactData, schema } from "./validation";
 import { Modal } from "../Modal";
+import { ContactsContext } from "../../contexts/ContactsContext";
+import { IContactData } from "../../interfaces/interfaces";
 
 interface ModalAddContactProps{
     toggleModal: () => void;
-    setContacts: Dispatch<SetStateAction<Contact[]>>
 }
 
-export const ModalAddContact = ({toggleModal, setContacts}: ModalAddContactProps) =>{
-    const { register, handleSubmit } = useForm<CreateContactData>({
+export const ModalAddContact = ({toggleModal}: ModalAddContactProps) =>{
+    const { register, handleSubmit } = useForm<IContactData>({
         resolver: zodResolver(schema)
     })
 
-    const createContact = async (data: CreateContactData) => {
-       const response = await api.post<Contact>('/contacts', data)
-
-       setContacts(previousContacts => [response.data, ...previousContacts])
-
-       toggleModal()
-    }
+    const { createContact } = useContext(ContactsContext)
 
     return (
         <Modal toggleModal={toggleModal}>

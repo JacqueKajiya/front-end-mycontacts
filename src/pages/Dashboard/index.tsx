@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { api } from "../../services/api"
 import { ContactList, Container } from "./styles"
 import { ContactInfo } from "../../components/ContactInfo"
-import { ModalAddContact } from "../../components/RegisterModal"
+import { ModalAddContact } from "../../components/ModalAddContact"
 
 export interface Contact{
     id: string,
