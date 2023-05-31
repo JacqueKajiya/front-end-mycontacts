@@ -1,3 +1,4 @@
+import { IClientLogin, IContactData, IContactUpdate, IUserData } from "../interfaces/interfaces";
 import { api } from "./api"
 
 export const LoginService = async (clientLogin: IClientLogin) => {
