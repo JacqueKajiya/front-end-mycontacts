@@ -7,6 +7,7 @@ export interface IUserAuth{
     createUser: (data: IUserData) => void;
     getUser: () => void;
     user: IUsersResponse;
+    logOut: () => void;
 }
 
 interface IUserProps{
@@ -34,8 +35,13 @@ const UserProvider = ({children}: IUserProps) => {
         setUser(userData)
     }
 
+    const logOut = () => {
+        localStorage.clear();
+        navigate("/")
+    }
+
     return(
-        <UserContext.Provider value={{createUser, getUser, user}}>
+        <UserContext.Provider value={{createUser, getUser, user, logOut}}>
             {children}
         </UserContext.Provider>
     )
