@@ -40,7 +40,7 @@ export const AuthProvider = ({children}: AuthProviderProps) =>{
             api.defaults.headers.common.authorization = `Bearer{token}`
             localStorage.setItem("my-contacts:token", token)
 
-            navigate('dashboard')
+            navigate('/dashboard')
         }catch (error){
             console.error(error)
         }

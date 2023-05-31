@@ -1,8 +1,3 @@
-export interface IClientLogin{
-    email: string;
-    password: string
-}
-
 export interface IContactData{
     id: string,
     email: string,
@@ -10,6 +5,10 @@ export interface IContactData{
     phone: string,
     createdAt: string,
     updatedAt: string
+}
+
+export interface IUsersResponse extends IContactData{
+    users: IContactData[]
 }
 
 export interface IUserData extends IContactData{

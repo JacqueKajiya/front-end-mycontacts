@@ -1,8 +1,12 @@
-import { ReactNode, createContext, useContext, useEffect } from "react";
+import { ReactNode, createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { IUserData, IUsersResponse } from "../interfaces/interfaces";
+import { getUserService } from "../services/api.services";
 
 export interface IUserAuth{
-
+    createUser: (data: IUserData) => void;
+    getUser: () => void;
+    user: IUsersResponse;
 }
 
 interface IUserProps{
@@ -11,27 +15,29 @@ interface IUserProps{
 
 export const UserContext = createContext<IUserAuth>({} as IUserAuth)
 
-export const UserData = () => {
-    return useContext(UserContext)
-}
-
-const UserProvider({children}: IUserProps){
-    const [user, setUser] = useState<IResponseUser>({} as IResponseUser)
-    const [loading, setLoading] = useState(false);
+const UserProvider = ({children}: IUserProps) => {
+    const [user, setUser] = useState<IUsersResponse>({} as IUsersResponse)
 
     const navigate = useNavigate();
 
-    const token = localStorage.getItem("my-contacts:token")
-
-    const loginUser = async(userLogin: IUserLogin) => {
+    const createUser = async(data: IUserData) => {
         try{
-            await 
-        }
+            await createUser(data)
+
+            navigate("/")
+        } catch(error) {console.error(error)}
     }
 
-    useEffect(() => {
+    const getUser = async() =>{
+        const userData = await getUserService()
 
-    })
+        setUser(userData)
+    }
 
+    return(
+        <UserContext.Provider value={{createUser, getUser, user}}>
+            {children}
+        </UserContext.Provider>
+    )
 
 }

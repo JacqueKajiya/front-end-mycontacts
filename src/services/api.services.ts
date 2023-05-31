@@ -1,15 +1,6 @@
-import { IClientLogin, IContactData, IContactUpdate, IUserData } from "../interfaces/interfaces";
+import { IContactData, IContactUpdate, IUserData } from "../interfaces/interfaces";
 import { api } from "./api"
 
-export const LoginService = async (clientLogin: IClientLogin) => {
-    return await api.post("/login", clientLogin).then((res) => {
-        const token = res.data.token;
-
-        localStorage.setItem("my-contacts:token", token);
-    }).catch((error) =>{
-        console.error(error)
-    })
-}
 
 export const createUserService = async (userData: IUserData) => {
     return await api.post("/clients", userData)
