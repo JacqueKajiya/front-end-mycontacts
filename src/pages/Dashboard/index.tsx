@@ -19,7 +19,7 @@ export const DashBoard = () =>{
 
     const navigate = useNavigate()
 
-    const { getUser } = useContext(UserContext)
+    const { getUser, logOut } = useContext(UserContext)
     const { contacts } = useContext(ContactsContext)
 
     const toggleModal = () => setIsOpenModal(!isOpenModal)
@@ -36,7 +36,10 @@ export const DashBoard = () =>{
 
     return(
         <Container>
-        <header><button type="button" onClick={toggleModal}>New Contact</button></header>
+        <header>
+            <button type="button" onClick={toggleModal}>New Contact</button>
+            <button type="button" onClick={logOut}>Sair</button>    
+        </header>
         { isOpenModal && <ModalAddContact toggleModal={toggleModal} />}
         <main>
             <ContactList>

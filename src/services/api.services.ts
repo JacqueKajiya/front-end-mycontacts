@@ -32,9 +32,18 @@ export const getUserService = async () =>{
 }
 
 export const createContactService = async (contactData: IContactData) =>{
-    return await api.post("/contacts", contactData)
-    .catch((error) =>{ console.error(error)}
-    )
+    return await api.post("/contacts", contactData).then(() =>{
+            toast.success("Contato adicionado!", {
+                autoClose:1000,
+            })
+        })
+        .catch((error) =>{ 
+            console.error(error)
+
+            toast.error("Houve algo errado", {
+            autoClose:1000,
+        })
+    })
 }
 
 export const getContactService = async () => {
@@ -51,11 +60,28 @@ export const getContactService = async () => {
 }
 
 export const updateContactService = async (contactData: IContactUpdate, id: string) =>{
-    await api.patch(`/contacts/${id}`, contactData)
-    .catch((error) => console.error(error))
+    await api.patch(`/contacts/${id}`, contactData).then(() =>{
+        toast.success("Contato atualizado!", {
+            autoClose: 1000,
+        })
+    })
+    .catch((error) => {
+        console.error(error),
+        toast.error("Algo deu errado...", {
+            autoClose:1000,
+        })
+    })
 }
 
 export const deleteContactService = async (id: string) => {
-    return await api.delete(`/contacts/${id}`)
-    .catch((error) => {console.error(error)})
+    return await api.delete(`/contacts/${id}`).then(() =>{
+        toast.success("Contato deletado", {
+            autoClose:1000,
+        })
+    })
+    .catch((error) => {console.error(error),
+        toast.error("Algo deu errado...",{
+            autoClose:1000,
+        })    
+    })
 }
