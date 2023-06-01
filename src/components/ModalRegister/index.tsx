@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 import { Modal } from "../Modal";
 import { schema } from "./validation";
 import { IUserData } from "../../interfaces/interfaces";
-import { UserContext } from "../../contexts/ClientContext";
+import { UserContext } from "../../contexts/UserContext";
 
 
 interface IModalRegisterProps{
@@ -21,10 +21,11 @@ export const ModalRegister = ({toggleModal}: IModalRegisterProps) => {
     return(
         <Modal toggleModal={toggleModal}>
             <form onSubmit={handleSubmit(createUser)}>
-            <label htmlFor="name">Nome</label>
+                
+                <label htmlFor="name">Nome</label>
                 <input type="text" id="name" {...register("name")} />
 
-                <label htmlFor="password">E-mail</label>
+                <label htmlFor="password">Senha</label>
                 <input type="password" id="password" {...register("password")} />
 
                 <label htmlFor="email">E-mail</label>

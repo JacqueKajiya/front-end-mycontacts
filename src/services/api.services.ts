@@ -3,7 +3,7 @@ import { api } from "./api"
 
 
 export const createUserService = async (userData: IUserData) => {
-    return await api.post("/clients", userData)
+    return await api.post("/users", userData)
     .catch((error) => console.error(error))
 }
 
@@ -16,7 +16,7 @@ export const getUserService = async () =>{
         } as any
     }
 
-    return await api.get("/clients").then((res) => res.data)
+    return await api.get("/users").then((res) => res.data)
     .catch((error) => console.error(error))
 }
 

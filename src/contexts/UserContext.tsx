@@ -1,7 +1,7 @@
 import { ReactNode, createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IUserData, IUsersResponse } from "../interfaces/interfaces";
-import { getUserService } from "../services/api.services";
+import { createUserService, getUserService } from "../services/api.services";
 
 export interface IUserAuth{
     createUser: (data: IUserData) => void;
@@ -23,7 +23,7 @@ const UserProvider = ({children}: IUserProps) => {
 
     const createUser = async(data: IUserData) => {
         try{
-            await createUser(data)
+            await createUserService(data)
 
             navigate("/")
         } catch(error) {console.error(error)}

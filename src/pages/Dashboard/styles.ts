@@ -6,7 +6,7 @@ export const Container = styled.div`
     height: 100vh;
 
     header{
-        /* background-color: ; */
+        background-color: #bbb;
     }
 
     main{

@@ -1,27 +1,32 @@
-import { Dispatch, SetStateAction } from 'react'
+import { useContext, useState } from 'react'
 import { Contact } from "../../pages/Dashboard"
 import { Container } from "./styles"
-import { api } from '../../services/api'
+import { ContactsContext } from '../../contexts/ContactsContext'
+import { ModalEditContact } from '../ModalEditContact'
 
 interface ContactProps{
     contact: Contact
-    setContacts: Dispatch<SetStateAction<Contact[]>>
 }
 
-interface ContactUpdate{
-    email: string,
-    name: string,
-    phone: string
-}
+export const ContactInfo = ({contact}: ContactProps) => {
+    const [openModal, setOpenModal] = useState<boolean>(false)
 
-export const ContactInfo = ({contact, setContacts}: ContactProps) => {
-    const updateContact = async (contactData: ContactUpdate, id: string) =>{
-        const response = await api.patch(`/contacts/${id}`, contactData)
-    }
+    const toggleModal = () => setOpenModal(!openModal)
+
+    const { deleteContact } = useContext(ContactsContext)
 
     return(
         <Container>
-            {contact.name}
+            <div>
+                <p>Nome: <strong>{contact.name}</strong></p>
+                <p>Email: <strong>{contact.email}</strong></p>
+                <p>Telefone: <strong>{contact.phone}</strong></p>
+            </div>
+            <button type='button' onClick={toggleModal}> Editar contato </button>
+            { openModal && <ModalEditContact toggleModal={toggleModal} contact={contact} id={contact.id} />}
+            <button type='button' onClick={() => deleteContact(contact.id)}>
+                Deletar contato
+            </button>
         </Container>
     )
 }

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CreateContactData, schema } from "./validation";
+import { schema } from "./validation";
 import { Modal } from "../Modal";
 import { ContactsContext } from "../../contexts/ContactsContext";
 import { IContactData } from "../../interfaces/interfaces";

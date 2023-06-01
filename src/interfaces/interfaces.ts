@@ -11,12 +11,18 @@ export interface IUsersResponse extends IContactData{
     users: IContactData[]
 }
 
-export interface IUserData extends IContactData{
+export interface IUserData extends IUserRequest{
     password: string
   }
 
-export interface IContactUpdate{
-    email: string,
+export interface IUserRequest{
     name: string,
-    phone: string
+    email: string,
+    phone: string,
+}
+
+export interface IContactUpdate{
+    email?: string,
+    name?: string,
+    phone?: string
 }
