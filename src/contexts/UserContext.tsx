@@ -16,7 +16,7 @@ interface IUserProps{
 
 export const UserContext = createContext<IUserAuth>({} as IUserAuth)
 
-const UserProvider = ({children}: IUserProps) => {
+export const UserProvider = ({children}: IUserProps) => {
     const [user, setUser] = useState<IUsersResponse>({} as IUsersResponse)
 
     const navigate = useNavigate();

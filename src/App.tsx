@@ -1,15 +1,27 @@
-import { AuthProvider } from "./providers/authProvider"
-import { RoutesMain } from "./routes"
-import GlobalStyle from "./styles/GlobalStyle"
+import GlobalStyle from "./styles/GlobalStyle";
+import { RoutesMain } from "./routes";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import { AuthProvider } from "./providers/authProvider";
+import { UserProvider } from "./contexts/UserContext";
+import { ContactsProvider } from "./contexts/ContactsContext";
 
 function App() {
 
   return (
     <>
-    <GlobalStyle />
-    <AuthProvider>
-      <RoutesMain />
-    </AuthProvider>
+    <UserProvider>
+      <ContactsProvider>
+        <GlobalStyle />
+        <ToastContainer/>
+      <AuthProvider>
+        <RoutesMain />
+      </AuthProvider>
+      </ContactsProvider>
+    </UserProvider>
+   
     </>
   )
 }

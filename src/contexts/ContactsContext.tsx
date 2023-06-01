@@ -18,7 +18,7 @@ export const ContactsContext = createContext<IContactsContext>(
     {} as IContactsContext
 );
 
-const ContactsProvider = ({children}: IContactsProps) =>{
+export const ContactsProvider = ({children}: IContactsProps) =>{
     const [contacts, setContacts] = useState<IContactData[]>([])
 
     const createContact = async (data: IContactData) =>{
