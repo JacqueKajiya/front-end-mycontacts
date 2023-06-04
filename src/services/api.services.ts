@@ -7,13 +7,11 @@ export const createUserService = async (userData: IUserData) => {
     return await api.post("/users", userData).then(() =>{
         toast.success("Usuário cadastrado",{
             autoClose:1200,
-            toastId:1,
         })
     })
     .catch((error) => {console.error(error)
         toast.error("Ops, algo deu errado",{
             autoClose:1200,
-            toastId:1,
         })
     })
 }

@@ -5,6 +5,7 @@ import { Modal } from "../Modal";
 import { schema } from "./validation";
 import { IUserData } from "../../interfaces/interfaces";
 import { UserContext } from "../../contexts/UserContext";
+import { StyledForm } from "../../styles/form";
 
 
 interface IModalRegisterProps{
@@ -20,7 +21,7 @@ export const ModalRegister = ({toggleModal}: IModalRegisterProps) => {
 
     return(
         <Modal toggleModal={toggleModal}>
-            <form onSubmit={handleSubmit(createUser)}>
+            <StyledForm onSubmit={handleSubmit(createUser)}>
                 
                 <label htmlFor="name">Nome</label>
                 <input type="text" id="name" {...register("name")} />
@@ -35,7 +36,7 @@ export const ModalRegister = ({toggleModal}: IModalRegisterProps) => {
                 <input type="tel" id="phone" {...register("phone")} />
 
                 <button type="submit">Registrar</button>
-            </form>
+            </StyledForm>
 
         </Modal>
     )

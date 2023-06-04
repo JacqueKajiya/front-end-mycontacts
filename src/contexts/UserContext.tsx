@@ -1,12 +1,12 @@
-import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useState } from "react";
+import { Dispatch, ReactNode, SetStateAction, createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IUserData, IUsersResponse } from "../interfaces/interfaces";
 import { createUserService, getUserService } from "../services/api.services";
-import { ContactsContext } from "./ContactsContext";
 import { LoginData } from "../pages/Login/validator";
 import { api } from "../services/api";
 
 import jwt_decode from "jwt-decode"
+import { toast } from "react-toastify";
 
 export interface IUserAuth{
     createUser: (data: IUserData) => void;
@@ -35,8 +35,6 @@ export const UserProvider = ({children}: IUserProps) => {
     const [userData, setUserData] = useState<IUsersResponse>({} as IUsersResponse)
     const [userId, setUserId] = useState<string>()
 
-    const { getContact } = useContext(ContactsContext)
-
     const navigate = useNavigate();
 
     const signIn = async(data: LoginData) => {
@@ -55,6 +53,9 @@ export const UserProvider = ({children}: IUserProps) => {
 
         }catch (error){
             console.error(error)
+            toast.error("Algum dado está errado!",{
+                autoClose:1200,
+            })
         }
     }
 

@@ -4,6 +4,8 @@ import { UserContext } from "../../contexts/UserContext"
 import { IUserDataResponse } from "../../interfaces/interfaces"
 import { api } from "../../services/api"
 import { ModalAddContact } from "../ModalAddContact"
+import { IoIosAdd } from "react-icons/io"
+import { HeaderStyled } from "./styles"
 
 export const Header = () => {
     const [isOpenModal, setIsOpenModal] = useState(false)
@@ -24,13 +26,16 @@ export const Header = () => {
     }, [])
 
     return(
-        <header>
+        <HeaderStyled>
             <div>
                 <h2>Olá, {userData.name}!</h2>
             </div>
-            <button type="button" onClick={toggleModal}>New Contact</button>
+                <button type="button" onClick={toggleModal}>
+                    Novo Contato
+                </button>
+                <IoIosAdd/>
             <button type="button" onClick={logOut}>Sair</button>
             { isOpenModal && <ModalAddContact toggleModal={toggleModal} />}
-        </header>
+        </HeaderStyled>
     )
 }
