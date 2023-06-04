@@ -8,7 +8,7 @@ export const RoutesMain = () =>{
         <Routes>
             <Route path="/" element={<Login/>} />
             <Route element={<ProtectedRoutes />}>
-               <Route path="/dashboard" element={<DashBoard/>} />
+               <Route path="/dashboard/:id" element={<DashBoard/>} />
             </Route>
             <Route path="*" element={<Navigate replace to='/'/>} />
         </Routes>

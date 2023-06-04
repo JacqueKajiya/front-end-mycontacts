@@ -23,7 +23,7 @@ export const getUserService = async () =>{
 
     if(token){
         api.defaults.headers = {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
         } as any
     }
 

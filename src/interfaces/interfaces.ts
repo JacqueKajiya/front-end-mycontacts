@@ -7,6 +7,12 @@ export interface IContactData{
     updatedAt: string
 }
 
+export interface IContactUpdate{
+    email?: string,
+    name?: string,
+    phone?: string
+}
+
 export interface IUsersResponse extends IContactData{
     users: IContactData[]
 }
@@ -21,8 +27,10 @@ export interface IUserRequest{
     phone: string,
 }
 
-export interface IContactUpdate{
-    email?: string,
-    name?: string,
-    phone?: string
+export interface IUserDataResponse {
+    id: string,
+    name: string,
+    email: string,
+    phone: string,
 }
+
