@@ -1,9 +1,9 @@
 # front-end-mycontacts
 
 <h2> 💻 Sobre o projeto </h2>
-App simples para cadastro de clientes e registro de contatos
+App simples para cadastro de clientes e registro de contatos, permite:
 
-- Cadastro de usuário
+- Cadastrar de usuário
 - Login do usuário
 - Adicionar Contatos
 - Listar Contatos
