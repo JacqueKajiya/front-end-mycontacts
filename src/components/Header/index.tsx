@@ -4,7 +4,9 @@ import { UserContext } from "../../contexts/UserContext"
 import { IUserDataResponse } from "../../interfaces/interfaces"
 import { api } from "../../services/api"
 import { ModalAddContact } from "../ModalAddContact"
+
 import { IoIosAdd } from "react-icons/io"
+import { MdExitToApp, MdPersonAddAlt1 } from "react-icons/md"
 import { HeaderStyled } from "./styles"
 
 export const Header = () => {
@@ -30,11 +32,15 @@ export const Header = () => {
             <div>
                 <h2>Olá, {userData.name}!</h2>
             </div>
-                <button type="button" onClick={toggleModal}>
-                    Novo Contato
+                <button className="newContact" type="button" onClick={toggleModal}>
+                    <span className="addContactText">
+                    Novo Contato <IoIosAdd/>
+                    </span>
+                    
+                    <span className="addContactImg"> <MdPersonAddAlt1 /> </span>
                 </button>
-                <IoIosAdd/>
-            <button type="button" onClick={logOut}>Sair</button>
+                
+            <button type="button" onClick={logOut} className="exitButton"><MdExitToApp/></button>
             { isOpenModal && <ModalAddContact toggleModal={toggleModal} />}
         </HeaderStyled>
     )

@@ -1,13 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    display: flex;
-    flex-direction: row;
+    width: 100%;
     height: 100vh;
 
-    header{
-        background-color: #bbb;
-    }
+    display: flex;
+    flex-direction: column;
 
     main{
         display: flex;
@@ -16,8 +14,6 @@ export const Container = styled.div`
 `
 
 export const ContactList = styled.ul`
-    /* background-color: ; */
     height: 100vh;
     width: 500px;
-    list-style: none;
 `

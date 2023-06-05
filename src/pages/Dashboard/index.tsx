@@ -27,9 +27,9 @@ export const DashBoard = () =>{
     return(
         <Container>
             <Header />
-        <main>
-            <ContactInfo />
-        </main>
+            <main>
+                <ContactInfo />
+            </main>
         </Container>
     )
 }

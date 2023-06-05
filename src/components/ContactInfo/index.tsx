@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from 'react'
 import { ContactsContext } from '../../contexts/ContactsContext'
 import { ModalEditContact } from '../ModalEditContact'
+import { StyledList } from './styles'
+import { TiUserDeleteOutline, TiEdit } from "react-icons/ti"
 
 export const ContactInfo = () => {
     const [openModal, setOpenModal] = useState<boolean>(false)
@@ -21,7 +23,7 @@ export const ContactInfo = () => {
     return(
         <>
         {contacts.length > 0 && (
-            <ul>
+            <StyledList>
                 {contacts.map((contact) => {
                     return(
                         <li key={contact.id}>
@@ -30,17 +32,19 @@ export const ContactInfo = () => {
                             <p>Email: <strong>{contact.email}</strong></p>
                             <p>Telefone: <strong>{contact.phone}</strong></p>
                         </div>
-
-                        <button type='button' onClick={toggleModal}> Imagem de Editar </button>
-                        { openModal && <ModalEditContact toggleModal={toggleModal} contact={contact} id={contact.id} />}
-                        
-                        <button type='button' onClick={() => deleteContact(contact.id)}>
-                        Imagem de Deletar
+                        <div className='buttonBox'>
+                            <button type='button' onClick={toggleModal}> <TiEdit /> </button>
+                            { openModal && <ModalEditContact toggleModal={toggleModal} contact={contact} id={contact.id} />}
+                            
+                            <button type='button' onClick={() => deleteContact(contact.id)}>
+                            <TiUserDeleteOutline/>
                         </button>
+                        </div>
+                        
                         </li>
                     )
                 })}
-            </ul>
+            </StyledList>
             )}
         </>
     )
