@@ -1,6 +1,6 @@
 # front-end-mycontacts
 
-💻 Sobre o projeto
+<h2> 💻 Sobre o projeto </h2>
 App simples para cadastro de clientes e registro de contatos
 
 ✏️ Como instalar e rodar a aplicação
