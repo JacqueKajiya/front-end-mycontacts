@@ -3,7 +3,7 @@
 <h2> 💻 Sobre o projeto </h2>
 App simples para cadastro de clientes e registro de contatos
 
-<h3>✏️ Como instalar e rodar a aplicação</h3>
+<h2>✏️ Como instalar e rodar a aplicação</h2>
 
 1º Clone o repositório em seu computador ou laptop
 
