@@ -3,7 +3,7 @@
 <h2> 💻 Sobre o projeto </h2>
 App simples para cadastro de clientes e registro de contatos
 
-✏️ Como instalar e rodar a aplicação
+<h3>✏️ Como instalar e rodar a aplicação</h3>
 
 1º Clone o repositório em seu computador ou laptop
 
@@ -16,7 +16,7 @@ App simples para cadastro de clientes e registro de contatos
 
 Utilize sua porta da API na porta do arquivo `api.ts` do Back-End.
 
-⚙️ Tecnologias usadas:
+<h3>⚙️ Tecnologias usadas:</h3>
 
 #### Linguagens
 
