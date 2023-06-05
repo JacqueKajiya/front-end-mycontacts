@@ -2,7 +2,7 @@
 
 <h2> 💻 Sobre o projeto </h2>
 App simples para cadastro de clientes e registro de contatos, permite:
-<br>
+
 - Cadastrar de usuário
 - Login do usuário
 - Adicionar Contatos
