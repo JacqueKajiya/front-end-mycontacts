@@ -1,10 +1,9 @@
-import { useContext, useEffect, useState } from "react"
-import { api } from "../../services/api"
-import { ContactList, Container } from "./styles"
-import { ContactInfo } from "../../components/ContactInfo"
-import { ModalAddContact } from "../../components/ModalAddContact"
+import { useContext, useEffect } from "react"
+import { Container } from "./styles"
 import { useNavigate } from "react-router-dom"
 import { UserContext } from "../../contexts/UserContext"
+import { ContactInfo } from "../../components/ContactInfo"
+import { Header } from "../../components/Header"
 import { ContactsContext } from "../../contexts/ContactsContext"
 
 export interface Contact{
@@ -15,39 +14,22 @@ export interface Contact{
 }
 
 export const DashBoard = () =>{
-    const [isOpenModal, setIsOpenModal] = useState(false)
-
     const navigate = useNavigate()
-
-    const { getUser, logOut } = useContext(UserContext)
-    const { contacts } = useContext(ContactsContext)
-
-    const toggleModal = () => setIsOpenModal(!isOpenModal)
 
     useEffect(() =>{
         const token = localStorage.getItem("my-contacts:token")
 
         if(!token){
             navigate("/")
-        } else{
-            setTimeout(getUser, 1500)
-        }
+        } 
     }, [])
 
     return(
         <Container>
-        <header>
-            <button type="button" onClick={toggleModal}>New Contact</button>
-            <button type="button" onClick={logOut}>Sair</button>    
-        </header>
-        { isOpenModal && <ModalAddContact toggleModal={toggleModal} />}
-        <main>
-            <ContactList>
-                {
-                    contacts.map(contact => <ContactInfo key={contact.id} contact={contact} />)
-                }
-            </ContactList>
-        </main>
+            <Header />
+            <main>
+                <ContactInfo />
+            </main>
         </Container>
     )
 }

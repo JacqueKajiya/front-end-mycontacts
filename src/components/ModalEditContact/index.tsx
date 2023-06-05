@@ -6,6 +6,7 @@ import { ContactsContext } from "../../contexts/ContactsContext";
 import { Modal } from "../Modal";
 import { Contact } from "../../pages/Dashboard";
 import { schema } from "./validation";
+import { StyledForm } from "../../styles/form";
 
 interface IModalEditContactProps{
     toggleModal: () => void;
@@ -30,7 +31,7 @@ export const ModalEditContact = ({toggleModal, contact, id}: IModalEditContactPr
 
     return(
         <Modal toggleModal={toggleModal}>
-            <form onSubmit={handleSubmit(editContact)}>
+            <StyledForm onSubmit={handleSubmit(editContact)}>
     
                 <label htmlFor="name">Nome</label>
                 <input type="text" id="name" defaultValue={contact.name} {...register("name")} />
@@ -42,7 +43,7 @@ export const ModalEditContact = ({toggleModal, contact, id}: IModalEditContactPr
                 <input type="tel" id="phone" defaultValue={contact.phone} {...register("phone")} />
 
                 <button type="submit">Editar contato</button>
-            </form>
+            </StyledForm>
 
         </Modal>
     )

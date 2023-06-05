@@ -5,6 +5,7 @@ import { schema } from "./validation";
 import { Modal } from "../Modal";
 import { ContactsContext } from "../../contexts/ContactsContext";
 import { IContactData } from "../../interfaces/interfaces";
+import { StyledForm } from "../../styles/form";
 
 interface ModalAddContactProps{
     toggleModal: () => void;
@@ -20,7 +21,7 @@ export const ModalAddContact = ({toggleModal}: ModalAddContactProps) =>{
     return (
         <Modal toggleModal={toggleModal}>
 
-            <form onSubmit={handleSubmit(createContact)}>
+            <StyledForm onSubmit={handleSubmit(createContact)}>
                 <label htmlFor="name">Nome</label>
                 <input type="text" id="name" {...register("name")} />
 
@@ -32,7 +33,7 @@ export const ModalAddContact = ({toggleModal}: ModalAddContactProps) =>{
 
                 <button type="submit">Cadastrar</button>
 
-            </form>
+            </StyledForm>
          </Modal>
     )
 }
